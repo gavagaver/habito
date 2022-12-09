@@ -6,3 +6,10 @@ def index(request):
 
     }
     return render(request, 'posts/index.html', context)
+
+
+def profile(request, username):
+    context = {
+
+    }
+    return render(request, 'posts/profile.html', context)
