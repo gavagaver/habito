@@ -1,11 +1,42 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  Лента
+    Index
 {% endblock %}
 
 {% block content %}
-  <h1>Лента</h1>
+    {% include 'includes/header.html' %}
 
+    <main>
+        <div class="main-section">
+            <div class="container">
+                <div class="main-section-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin">
+                                {% include 'posts/includes/user-data.html' %}
+                                {% include 'posts/includes/suggestions.html' %}
+                                {% include 'posts/includes/tags-sec.html' %}
+                            </div><!--main-left-sidebar end-->
+                        </div>
+                        <div class="col-lg-6 col-md-8 no-pd">
+                            <div class="main-ws-sec">
+                                {% include 'posts/includes/post-topbar.html' %}
+                                <div class="posts-section">
+                                    {% include 'posts/includes/top-profiles.html' %}
+                                    {% include 'posts/includes/post-bar.html' %}
+                                </div><!--posts-section end-->
+                            </div><!--main-ws-sec end-->
+                        </div>
+                        <div class="col-lg-3 pd-right-none no-pd">
+                            <div class="right-sidebar">
+                                {% include 'posts/includes/widget-jobs.html' %}
+                            </div><!--right-sidebar end-->
+                        </div>
+                    </div>
+                </div><!-- main-section-data end-->
+            </div>
+        </div>
+    </main>
 
 {% endblock %}
