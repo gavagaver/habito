@@ -6,34 +6,35 @@ User = get_user_model()
 TITLE_CHAR_COUNT: int = 15
 
 
-class Group(models.Model):
+class Habit(models.Model):
     title = models.CharField(verbose_name='Название', max_length=200)
     slug = models.SlugField(verbose_name='Линк', unique=True)
     description = models.TextField(verbose_name='Описание')
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='habits',
+        verbose_name='Автор',
+    )
+    complete_times = models.IntegerField(verbose_name='Количество выполнений')
+    complete_percent = models.IntegerField(verbose_name='Процент завершения')
 
     def __str__(self):
         return f'{self.title}'
 
 
 class Post(models.Model):
+    title = models.CharField(verbose_name='Название', max_length=200)
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата публикации',
         auto_now_add=True,
     )
-    author = models.ForeignKey(
-        User,
+    habit = models.ForeignKey(
+        Habit,
         on_delete=models.CASCADE,
-        related_name='posts',
-        verbose_name='Автор',
-    )
-    group = models.ForeignKey(
-        Group,
-        on_delete=models.SET_NULL,
-        related_name='posts',
-        verbose_name='Группа',
-        blank=True,
-        null=True,
+        related_name='habits',
+        verbose_name='Привычка',
     )
     image = models.ImageField(
         verbose_name='Картинка',

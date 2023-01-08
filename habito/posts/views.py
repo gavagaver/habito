@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Group, Follow
+from .models import Post, Habit, Follow
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm, CommentForm
 from django.views.decorators.cache import cache_page
@@ -30,7 +30,7 @@ def index(request):
 
 
 def group_posts(request, slug):
-    group = get_object_or_404(Group, slug=slug)
+    group = get_object_or_404(Habit, slug=slug)
     page_obj = ppaginator(
         request,
         group.posts.select_related('author').all(),

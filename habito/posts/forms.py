@@ -5,13 +5,13 @@ from .models import Post, Comment
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ['text', 'group', 'image']
+        fields = ['text', 'habit', 'image']
         labels = {
             'text': 'Введите текст поста:',
-            'group': 'Укажите подходящую группу:',
+
         }
         help_texts = {
-            'group': 'Можете указать тематику поста или оставить поле пустым'
+
         }
 
 

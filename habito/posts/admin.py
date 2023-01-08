@@ -1,20 +1,20 @@
 from django.contrib import admin
-from .models import Post, Group, Comment, Follow
+from .models import Post, Habit, Comment, Follow
 
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('pk',
+                    'title',
                     'text',
                     'pub_date',
-                    'author',
-                    'group')
-    search_fields = ('text',)
+                    'habit')
+    search_fields = ('title', 'text',)
     list_filter = ('pub_date',)
-    list_editable = ('group',)
+    list_editable = ('habit',)
     empty_value_display = '-пусто-'
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Group)
+admin.site.register(Habit)
 admin.site.register(Comment)
 admin.site.register(Follow)
