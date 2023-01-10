@@ -21,7 +21,7 @@ def ppaginator(request, post_list):
 def index(request):
     page_obj = ppaginator(
         request,
-        Post.objects.select_related('group', 'author').all(),
+        Post.objects.select_related('habit').all(),
     )
     context = {
         'page_obj': page_obj,

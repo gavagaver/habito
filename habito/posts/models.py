@@ -24,7 +24,11 @@ class Habit(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(verbose_name='Название', max_length=200)
+    title = models.CharField(
+        verbose_name='Название',
+        max_length=200,
+        default='Название поста',
+    )
     text = models.TextField(verbose_name='Текст')
     pub_date = models.DateTimeField(
         verbose_name='Дата публикации',
@@ -35,6 +39,7 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='habits',
         verbose_name='Привычка',
+        default=10,
     )
     image = models.ImageField(
         verbose_name='Картинка',
